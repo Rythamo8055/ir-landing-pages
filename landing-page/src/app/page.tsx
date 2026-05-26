@@ -781,14 +781,14 @@ export default function Home() {
                 </button>
               </div>
             ) : (
-              <form onSubmit={handleFormSubmit} className="space-y-6">
+              <form onSubmit={handleFormSubmit} className="space-y-6" suppressHydrationWarning={true}>
                 <div>
                   <h3 className="text-xl font-bold font-heading text-light tracking-hero">Clinical Consultation Request</h3>
                   <p className="text-xs text-muted mt-1 tracking-body">Submit your information securely. HIPPA protected data terminal.</p>
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div className="space-y-2">
+                  <div className="space-y-2" suppressHydrationWarning={true}>
                     <label className="text-xs font-semibold text-light uppercase tracking-tag block">Full Name</label>
                     <input 
                       type="text" 
@@ -800,7 +800,7 @@ export default function Home() {
                       className="w-full bg-obsidian border border-border-glass rounded-sm px-4 py-3 text-sm text-light focus:border-cyan-glow focus:outline-none transition-colors tracking-body"
                     />
                   </div>
-                  <div className="space-y-2">
+                  <div className="space-y-2" suppressHydrationWarning={true}>
                     <label className="text-xs font-semibold text-light uppercase tracking-tag block">Email Address</label>
                     <input 
                       type="email" 
@@ -815,7 +815,7 @@ export default function Home() {
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div className="space-y-2">
+                  <div className="space-y-2" suppressHydrationWarning={true}>
                     <label className="text-xs font-semibold text-light uppercase tracking-tag block">Phone Number</label>
                     <input 
                       type="tel" 
@@ -827,7 +827,7 @@ export default function Home() {
                       className="w-full bg-obsidian border border-border-glass rounded-sm px-4 py-3 text-sm text-light focus:border-cyan-glow focus:outline-none transition-colors tracking-body"
                     />
                   </div>
-                  <div className="space-y-2">
+                  <div className="space-y-2" suppressHydrationWarning={true}>
                     <label className="text-xs font-semibold text-light uppercase tracking-tag block">Procedure Focus</label>
                     <select
                       value={formData.procedureInterest}
@@ -844,7 +844,7 @@ export default function Home() {
                   </div>
                 </div>
 
-                <div className="space-y-2">
+                <div className="space-y-2" suppressHydrationWarning={true}>
                   <label className="text-xs font-semibold text-light uppercase tracking-tag block">Urgency Status</label>
                   <div className="grid grid-cols-3 gap-2">
                     {["Routine", "Urgent", "Physician Referral"].map(status => (
