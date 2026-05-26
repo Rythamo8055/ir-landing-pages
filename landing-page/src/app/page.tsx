@@ -116,6 +116,32 @@ export default function Home() {
   // Active Detail Modal State
   const [selectedProcedure, setSelectedProcedure] = useState<Procedure | null>(null);
 
+  // Premium Paper Specimen Config & State
+  const paperSpecimens = [
+    { id: "laid-linen", name: "Laid Linen Finish", path: "/patterns/IMG_20260526_124119_623.jpg" },
+    { id: "cotton-parchment", name: "Cotton Parchment", path: "/patterns/IMG_20260526_124121_706.jpg" },
+    { id: "organic-hemp", name: "Organic Hemp Surface", path: "/patterns/IMG_20260526_124123_472.jpg" },
+    { id: "silk-fiber", name: "Soft Silk Fiber (Silk)", path: "/patterns/IMG_20260526_124129_650.jpg" },
+    { id: "handmade-wove", name: "Handmade Wove Finish", path: "/patterns/IMG_20260526_124131_505.jpg" },
+    { id: "pressed-pulp", name: "Pressed Pulp Texture", path: "/patterns/IMG_20260526_124133_839.jpg" },
+    { id: "antique-scroll", name: "Antique Scroll Paper", path: "/patterns/IMG_20260526_124135_513.jpg" },
+    { id: "fine-embossed", name: "Fine Embossed Grid", path: "/patterns/IMG_20260526_124137_247.jpg" },
+    { id: "japanese-washi", name: "Japanese Washi Fibers", path: "/patterns/IMG_20260526_124140_229.jpg" },
+    { id: "vellum-smooth", name: "Vellum Smooth Parchment", path: "/patterns/IMG_20260526_124141_665.jpg" },
+    { id: "parchment-fleck", name: "Parchment Fleck Speck", path: "/patterns/IMG_20260526_124143_580.jpg" },
+    { id: "handcrafted-jute", name: "Handcrafted Jute Fiber", path: "/patterns/IMG_20260526_124145_396.jpg" },
+    { id: "premium-flax", name: "Premium Flax Linen", path: "/patterns/IMG_20260526_124146_812.jpg" },
+    { id: "matte-rag", name: "Matte Cotton Rag", path: "/patterns/IMG_20260526_124154_301.jpg" },
+    { id: "cardstock-matte", name: "Cardstock Matte Finish", path: "/patterns/IMG_20260526_124159_802.jpg" },
+    { id: "canvas-fine", name: "Canvas Fine Weave", path: "/patterns/IMG_20260526_124202_089.jpg" },
+    { id: "studio-textured", name: "Studio Textured Pulp", path: "/patterns/IMG_20260526_124204_563.jpg" },
+    { id: "artisanal-speck", name: "Artisanal Speck Rag", path: "/patterns/IMG_20260526_124206_320.jpg" }
+  ];
+
+  const [activePattern, setActivePattern] = useState(paperSpecimens[3].path); // Default to Soft Silk Fiber
+  const [patternOpacity, setPatternOpacity] = useState(0.08); // Blending opacity
+  const [patternSize, setPatternSize] = useState(350); // Scale of repeating pattern
+
   // Filter procedures based on active tab
   const filteredProcedures = activeCategory === "all" 
     ? procedures 
@@ -130,11 +156,23 @@ export default function Home() {
   };
 
   return (
-    <div className="relative min-h-screen bg-obsidian text-light overflow-x-hidden font-sans tracking-body">
+    <div className="relative min-h-screen bg-obsidian text-light font-sans tracking-body select-none">
       
-      {/* 1. Header / Navigation */}
-      <header className="sticky top-4 z-50 px-4 md:px-8">
-        <nav className="max-w-7xl mx-auto glass-panel rounded-lg px-6 py-4 flex items-center justify-between">
+      {/* Dynamic Paper Pattern Overlay */}
+      <div 
+        className="absolute inset-0 pointer-events-none z-0"
+        style={{
+          backgroundImage: `url(${activePattern})`,
+          backgroundRepeat: 'repeat',
+          backgroundSize: `${patternSize}px ${patternSize}px`,
+          opacity: patternOpacity,
+          mixBlendMode: 'multiply'
+        }}
+      />
+      
+      {/* 1. Floating Header / Navigation (Pinned over Scroll-Expansion) */}
+      <header className="fixed top-4 left-0 right-0 z-50 px-4 md:px-8 pointer-events-none">
+        <nav className="max-w-7xl mx-auto glass-panel rounded-lg px-6 py-4 flex items-center justify-between pointer-events-auto bg-white">
           <div className="flex items-center space-x-3">
             <span className="text-2xl font-bold font-heading tracking-hero text-light flex items-center">
               RYTHAMO
@@ -961,6 +999,111 @@ export default function Home() {
           </div>
         </footer>
       </ScrollExpandMedia>
+
+      {/* 8. Floating Stationery Specimen Chart (Texture Selector) */}
+      <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end" suppressHydrationWarning={true}>
+        {/* Toggle Button */}
+        <button
+          type="button"
+          onClick={() => {
+            const el = document.getElementById("specimen-panel");
+            if (el) el.classList.toggle("hidden");
+          }}
+          className="flex items-center space-x-2 px-4 py-2.5 rounded-sm bg-white border border-[#E1ECEB] text-light font-heading text-xs font-bold tracking-action cursor-pointer hover:border-cyan-glow transition-colors"
+          style={{ boxShadow: '0px 4px 20px rgba(23, 42, 40, 0.08)' }}
+        >
+          <span className="w-2 h-2 rounded-full bg-cyan-glow animate-pulse" />
+          <span>Paper Texture Finish</span>
+        </button>
+
+        {/* Panel */}
+        <div
+          id="specimen-panel"
+          className="hidden mt-3 w-72 rounded-sm bg-white border border-[#E1ECEB] p-4 flex flex-col space-y-4"
+          style={{ 
+            boxShadow: '0px 8px 30px rgba(23, 42, 40, 0.12)',
+            maxHeight: '420px',
+            overflowY: 'auto'
+          }}
+        >
+          <div className="border-b border-border-glass pb-2">
+            <h4 className="text-[10px] font-mono font-bold tracking-tag text-cyan-glow uppercase">
+              Paper Finish Specimen Selector
+            </h4>
+            <p className="text-[9px] text-muted tracking-body mt-0.5">Select a high-end organic stationery backdrop finish.</p>
+          </div>
+
+          {/* Specimens Grid */}
+          <div className="grid grid-cols-1 gap-1.5 overflow-y-auto max-h-[200px] pr-1.5">
+            {paperSpecimens.map((specimen, idx) => (
+              <button
+                key={specimen.id}
+                type="button"
+                onClick={() => setActivePattern(specimen.path)}
+                className={`flex items-center justify-between p-2 rounded-sm border text-left cursor-pointer transition-all ${
+                  activePattern === specimen.path
+                    ? "border-cyan-glow bg-cyan-glow/5"
+                    : "border-border-glass hover:border-cyan-glow/40 hover:bg-obsidian/30"
+                }`}
+              >
+                <div className="flex items-center space-x-2">
+                  {/* Thumbnail */}
+                  <div 
+                    className="w-5 h-5 rounded-full border border-border-glass overflow-hidden bg-cover bg-center bg-no-repeat"
+                    style={{ backgroundImage: `url(${specimen.path})` }}
+                  />
+                  <span className="text-[10px] font-semibold text-light tracking-body">
+                    {idx + 1}. {specimen.name}
+                  </span>
+                </div>
+                {activePattern === specimen.path && (
+                  <span className="text-[10px] font-bold text-cyan-glow">✓</span>
+                )}
+              </button>
+            ))}
+          </div>
+
+          {/* Controls */}
+          <div className="border-t border-border-glass pt-3 space-y-3 font-mono text-[9px] text-muted">
+            <div className="space-y-1">
+              <div className="flex justify-between">
+                <span>Grain Intensity (Blend)</span>
+                <span className="text-light font-bold">{(patternOpacity * 100).toFixed(0)}%</span>
+              </div>
+              <input
+                type="range"
+                min="0.02"
+                max="0.25"
+                step="0.01"
+                value={patternOpacity}
+                onChange={(e) => setPatternOpacity(parseFloat(e.target.value))}
+                className="w-full h-1 bg-border-glass rounded-lg appearance-none cursor-pointer accent-cyan-glow"
+              />
+            </div>
+
+            <div className="space-y-1">
+              <div className="flex justify-between">
+                <span>Texture Scale (Grid Size)</span>
+                <span className="text-light font-bold">{patternSize}px</span>
+              </div>
+              <input
+                type="range"
+                min="150"
+                max="650"
+                step="25"
+                value={patternSize}
+                onChange={(e) => setPatternSize(parseInt(e.target.value))}
+                className="w-full h-1 bg-border-glass rounded-lg appearance-none cursor-pointer accent-cyan-glow"
+              />
+            </div>
+          </div>
+          
+          <div className="text-[8px] text-center text-muted font-mono tracking-body border-t border-border-glass pt-2">
+            STATIONERY SANCTUARY Paradigm &bull; Rythamo
+          </div>
+        </div>
+      </div>
+
     </div>
   );
 }
