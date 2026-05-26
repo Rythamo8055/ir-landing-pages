@@ -1,16 +1,16 @@
 @import "tailwindcss";
 
 :root {
-  /* HSL Palette for Rythamo Hospitals (The Solid Vascular Pathway) */
-  --bg-obsidian: 173 30% 6%;           /* Teal Obsidian neutral background (#0A1413) */
+  /* HSL Palette for Rythamo Hospitals (Warm Light Theme - The Vascular Sanctuary) */
+  --bg-obsidian: 36 20% 97%;            /* Warm Sand Neutral background (#FAF8F5) */
   --accent-cyan: 173 58% 39%;           /* Vascular Teal primary clinical (#2A9D8F) */
   --accent-azure: 12 76% 61%;           /* Terracotta Coral CTA accent (#E76F51) */
   --glow-sapphire: 12 76% 50%;          /* Warm Supporting Coral */
-  --text-light: 173 20% 98%;            /* Soft Silk White (#F4F7F7) */
-  --text-muted: 173 15% 68%;            /* Muted Clay (#A3B7B5) */
-  --surface-obsidian: 173 30% 10%;      /* Intake Surface (#112120) */
-  --surface-obsidian-hover: 173 30% 13%;/* Hover Intake Surface */
-  --border-glass: 173 20% 18%;          /* Pinhole Border (#203432) */
+  --text-light: 173 28% 13%;            /* Deep Teal Charcoal body text (#172A28) */
+  --text-muted: 173 13% 35%;            /* Muted Slate Clay (#4E6562) */
+  --surface-obsidian: 0 0% 100%;        /* Intake Surface White (#FFFFFF) */
+  --surface-obsidian-hover: 173 15% 95%;/* Hover Intake Surface */
+  --border-glass: 173 15% 90%;          /* Pinhole Border (#E1ECEB) */
   
   --background: hsl(var(--bg-obsidian));
   --foreground: hsl(var(--text-light));
@@ -37,7 +37,7 @@
   background: hsl(var(--bg-obsidian));
 }
 ::-webkit-scrollbar-thumb {
-  background: hsl(var(--surface-obsidian));
+  background: hsl(var(--border-glass));
   border-radius: 4px;
   border: 2px solid hsl(var(--bg-obsidian));
 }
@@ -124,7 +124,7 @@ body {
   height: 2px;
   background-color: hsl(var(--accent-cyan));
   animation: scanning 4s linear infinite;
-  opacity: 0.5;
+  opacity: 0.6;
 }
 
 /* Clean text wrap optimizations */
@@ -139,6 +139,6 @@ p {
 
 /* Smooth custom selection highlights */
 ::selection {
-  background: hsl(var(--accent-cyan) / 0.25);
+  background: hsl(var(--accent-cyan) / 0.15);
   color: hsl(var(--text-light));
 }

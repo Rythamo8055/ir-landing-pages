@@ -218,7 +218,7 @@ export default function Home() {
 
         {/* Right Side: Animated Clinical HUD */}
         <div className="lg:col-span-5 relative w-full aspect-square max-w-md mx-auto z-10">
-          <div className="w-full h-full glass-panel rounded-lg p-6 relative overflow-hidden flex flex-col justify-between border-cyan-glow/20">
+          <div className="w-full h-full bg-[#0A1413] border border-cyan-glow/20 rounded-lg p-6 relative overflow-hidden flex flex-col justify-between">
             
             {/* Hologram Scanner Effect */}
             <div className="scan-line" />
@@ -501,7 +501,7 @@ export default function Home() {
 
         {/* Modal Detail Dialog */}
         {selectedProcedure && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-obsidian/95 backdrop-blur-sm">
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#0A1413]/70 backdrop-blur-sm">
             <div className="glass-panel w-full max-w-2xl rounded-lg p-8 relative overflow-hidden border-cyan-glow/40 max-h-[90vh] overflow-y-auto">
               
               {/* Close Button */}
