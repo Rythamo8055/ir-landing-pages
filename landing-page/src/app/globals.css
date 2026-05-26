@@ -1,16 +1,16 @@
 @import "tailwindcss";
 
 :root {
-  /* HSL Palette for Rythamo Hospitals */
-  --bg-obsidian: 222 47% 6%;
-  --accent-cyan: 180 100% 45%;
-  --accent-azure: 200 95% 48%;
-  --glow-sapphire: 217 91% 60%;
-  --text-light: 210 40% 98%;
-  --text-muted: 215 20% 65%;
-  --surface-obsidian: 222 47% 11%;
-  --surface-obsidian-hover: 222 47% 14%;
-  --border-glass: 222 47% 20%;
+  /* HSL Palette for Rythamo Hospitals (The Solid Vascular Pathway) */
+  --bg-obsidian: 173 30% 6%;           /* Teal Obsidian neutral background (#0A1413) */
+  --accent-cyan: 173 58% 39%;           /* Vascular Teal primary clinical (#2A9D8F) */
+  --accent-azure: 12 76% 61%;           /* Terracotta Coral CTA accent (#E76F51) */
+  --glow-sapphire: 12 76% 50%;          /* Warm Supporting Coral */
+  --text-light: 173 20% 98%;            /* Soft Silk White (#F4F7F7) */
+  --text-muted: 173 15% 68%;            /* Muted Clay (#A3B7B5) */
+  --surface-obsidian: 173 30% 10%;      /* Intake Surface (#112120) */
+  --surface-obsidian-hover: 173 30% 13%;/* Hover Intake Surface */
+  --border-glass: 173 20% 18%;          /* Pinhole Border (#203432) */
   
   --background: hsl(var(--bg-obsidian));
   --foreground: hsl(var(--text-light));
@@ -42,12 +42,12 @@
   border: 2px solid hsl(var(--bg-obsidian));
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: hsl(var(--accent-azure) / 0.5);
+  background: hsl(var(--accent-cyan));
 }
 
 /* Custom Focus Ring styling */
 :focus-visible {
-  outline: 2px solid hsl(var(--accent-cyan));
+  outline: 2px solid hsl(var(--accent-azure));
   outline-offset: 4px;
 }
 
@@ -61,53 +61,45 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Glassmorphism Panel Utilities */
+/* Flat Panel Utilities (Replaces Glassmorphism as requested) */
 .glass-panel {
-  background: linear-gradient(
-    135deg,
-    hsl(var(--surface-obsidian) / 0.7) 0%,
-    hsl(var(--bg-obsidian) / 0.8) 100%
-  );
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid hsl(var(--border-glass) / 0.4);
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  background-color: hsl(var(--surface-obsidian));
+  border: 1px solid hsl(var(--border-glass));
+  box-shadow: none;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .glass-panel:hover {
-  border-color: hsl(var(--accent-cyan) / 0.4);
-  box-shadow: 0 12px 40px 0 rgba(0, 242, 254, 0.1);
+  border-color: hsl(var(--accent-cyan));
+  transform: translateY(-2px);
 }
 
-/* Glowing Ambient Backgrounds */
+/* Glowing Ambient Backgrounds - REDUCED TO ZERO IN FAVOR OF SOLID COHESION */
 .ambient-glow {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(120px);
-  opacity: 0.15;
-  pointer-events: none;
-  z-index: 0;
+  display: none;
+}
+
+/* Topography Micro-Craft Spacing */
+.tracking-hero {
+  letter-spacing: -0.01em;
+}
+.tracking-body {
+  letter-spacing: 0.01em;
+}
+.tracking-action {
+  letter-spacing: 0.04em;
+}
+.tracking-tag {
+  letter-spacing: 0.08em;
 }
 
 /* Micro-animations */
 @keyframes float {
   0%, 100% {
-    transform: translateY(0px) rotate(0deg);
+    transform: translateY(0px);
   }
   50% {
-    transform: translateY(-10px) rotate(1deg);
-  }
-}
-
-@keyframes pulse-cyan {
-  0%, 100% {
-    opacity: 0.3;
-    box-shadow: 0 0 15px hsl(var(--accent-cyan) / 0.2);
-  }
-  50% {
-    opacity: 0.8;
-    box-shadow: 0 0 30px hsl(var(--accent-cyan) / 0.6);
+    transform: translateY(-6px);
   }
 }
 
@@ -121,11 +113,7 @@ body {
 }
 
 .animate-float {
-  animation: float 6s ease-in-out infinite;
-}
-
-.animate-pulse-cyan {
-  animation: pulse-cyan 3s infinite ease-in-out;
+  animation: float 5s ease-in-out infinite;
 }
 
 .scan-line {
@@ -134,9 +122,9 @@ body {
   left: 0;
   width: 100%;
   height: 2px;
-  background: linear-gradient(90deg, transparent, hsl(var(--accent-cyan)), transparent);
+  background-color: hsl(var(--accent-cyan));
   animation: scanning 4s linear infinite;
-  opacity: 0.3;
+  opacity: 0.5;
 }
 
 /* Clean text wrap optimizations */
