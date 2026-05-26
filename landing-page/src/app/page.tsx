@@ -799,6 +799,7 @@ export default function Home() {
                     <input 
                       type="text" 
                       required
+                      suppressHydrationWarning={true}
                       placeholder="e.g. John Doe"
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
@@ -810,6 +811,7 @@ export default function Home() {
                     <input 
                       type="email" 
                       required
+                      suppressHydrationWarning={true}
                       placeholder="e.g. john@example.com"
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
@@ -824,6 +826,7 @@ export default function Home() {
                     <input 
                       type="tel" 
                       required
+                      suppressHydrationWarning={true}
                       placeholder="e.g. (410) 555-0199"
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
@@ -938,7 +941,7 @@ export default function Home() {
           {/* Copyright Bar */}
           <div className="border-t border-border-glass/40 pt-8 flex flex-col sm:flex-row items-center justify-between text-[11px] text-muted space-y-4 sm:space-y-0">
             <div>
-              &copy; {new Date().getFullYear()} Rythamo Hospitals &amp; Research Systems. All rights reserved.
+              &copy; 2026 Rythamo Hospitals &amp; Research Systems. All rights reserved.
             </div>
             <div className="flex space-x-4">
               <a href="#" className="hover:text-light">Privacy Policy</a>
