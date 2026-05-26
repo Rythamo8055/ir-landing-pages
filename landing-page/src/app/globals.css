@@ -1,0 +1,156 @@
+@import "tailwindcss";
+
+:root {
+  /* HSL Palette for Rythamo Hospitals */
+  --bg-obsidian: 222 47% 6%;
+  --accent-cyan: 180 100% 45%;
+  --accent-azure: 200 95% 48%;
+  --glow-sapphire: 217 91% 60%;
+  --text-light: 210 40% 98%;
+  --text-muted: 215 20% 65%;
+  --surface-obsidian: 222 47% 11%;
+  --surface-obsidian-hover: 222 47% 14%;
+  --border-glass: 222 47% 20%;
+  
+  --background: hsl(var(--bg-obsidian));
+  --foreground: hsl(var(--text-light));
+}
+
+@theme inline {
+  --color-obsidian: hsl(var(--bg-obsidian));
+  --color-cyan-glow: hsl(var(--accent-cyan));
+  --color-azure-glow: hsl(var(--accent-azure));
+  --color-sapphire-glow: hsl(var(--glow-sapphire));
+  --color-surface-obsidian: hsl(var(--surface-obsidian));
+  --color-surface-obsidian-hover: hsl(var(--surface-obsidian-hover));
+  
+  --font-sans: var(--font-inter), system-ui, sans-serif;
+  --font-heading: var(--font-outfit), system-ui, sans-serif;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: hsl(var(--bg-obsidian));
+}
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--surface-obsidian));
+  border-radius: 4px;
+  border: 2px solid hsl(var(--bg-obsidian));
+}
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--accent-azure) / 0.5);
+}
+
+/* Custom Focus Ring styling */
+:focus-visible {
+  outline: 2px solid hsl(var(--accent-cyan));
+  outline-offset: 4px;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Glassmorphism Panel Utilities */
+.glass-panel {
+  background: linear-gradient(
+    135deg,
+    hsl(var(--surface-obsidian) / 0.7) 0%,
+    hsl(var(--bg-obsidian) / 0.8) 100%
+  );
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid hsl(var(--border-glass) / 0.4);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-panel:hover {
+  border-color: hsl(var(--accent-cyan) / 0.4);
+  box-shadow: 0 12px 40px 0 rgba(0, 242, 254, 0.1);
+}
+
+/* Glowing Ambient Backgrounds */
+.ambient-glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: 0.15;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Micro-animations */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(1deg);
+  }
+}
+
+@keyframes pulse-cyan {
+  0%, 100% {
+    opacity: 0.3;
+    box-shadow: 0 0 15px hsl(var(--accent-cyan) / 0.2);
+  }
+  50% {
+    opacity: 0.8;
+    box-shadow: 0 0 30px hsl(var(--accent-cyan) / 0.6);
+  }
+}
+
+@keyframes scanning {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-pulse-cyan {
+  animation: pulse-cyan 3s infinite ease-in-out;
+}
+
+.scan-line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, hsl(var(--accent-cyan)), transparent);
+  animation: scanning 4s linear infinite;
+  opacity: 0.3;
+}
+
+/* Clean text wrap optimizations */
+h1, h2, h3, h4 {
+  text-wrap: balance;
+  font-family: var(--font-heading);
+}
+
+p {
+  text-wrap: pretty;
+}
+
+/* Smooth custom selection highlights */
+::selection {
+  background: hsl(var(--accent-cyan) / 0.25);
+  color: hsl(var(--text-light));
+}
