@@ -1,0 +1,20 @@
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="32" height="32" rx="6" fill="var(--white)" />
+  <circle cx="12" cy="16" r="8" stroke="rgba(20,20,19,0.2)" strokeWidth="1" strokeDasharray="1.5 2" />
+  <circle cx="12" cy="16" r="5" stroke="rgba(20,20,19,0.08)" strokeWidth="1" />
+  {/* Concentric Orbits */}
+  <circle cx="12" cy="16" r="8" stroke="rgba(243, 115, 56, 0.2)" strokeWidth="1" strokeDasharray="1.5 2" />
+  <circle cx="12" cy="16" r="5" stroke="rgba(255, 255, 255, 0.08)" strokeWidth="1" />
+  {/* Vascular micro-catheter path */}
+  <path d="M6 16 C10 11, 17 21, 21 16" stroke="url(#fav-logo-grad)" strokeWidth="2.5" strokeLinecap="round" />
+  {/* Overlapping precision beacon node */}
+  <circle cx="21" cy="16" r="6" stroke="rgba(255, 255, 255, 0.12)" strokeWidth="1" />
+  <circle cx="21" cy="16" r="2.5" fill="#FFFFFF" />
+  <circle cx="21" cy="16" r="1" fill="#F37338" />
+  <defs>
+    <linearGradient id="fav-logo-grad" x1="6" y1="16" x2="21" y2="16" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stopColor="#CF4500" />
+      <stop offset="100%" stopColor="#F37338" />
+    </linearGradient>
+  </defs>
+</svg>

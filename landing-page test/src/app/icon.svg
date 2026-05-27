@@ -1,0 +1,27 @@
+<svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Monogram R Catheter Loop - Vascular Teal -->
+  <path
+    d="M 65 155 V 45 C 65 45, 135 30, 135 90 C 135 120, 105 125, 65 120 C 80 120, 110 125, 135 155"
+    stroke="#2A9D8F"
+    stroke-width="12"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+  <!-- Catheter Guide wire tip - Terracotta Coral -->
+  <path
+    d="M 65 150 V 50 C 65 50, 130 37, 130 90 C 130 118, 100 123, 65 120 C 78 120, 105 124, 128 150"
+    stroke="#E76F51"
+    stroke-width="3"
+    stroke-linecap="round"
+  />
+  <!-- Outer circular boundary representing fluoroscopic scope -->
+  <circle
+    cx="100"
+    cy="100"
+    r="85"
+    stroke="#2A9D8F"
+    stroke-width="1.5"
+    stroke-dasharray="8 6"
+    opacity="0.3"
+  />
+</svg>
