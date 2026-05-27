@@ -282,16 +282,14 @@ p {
   pointer-events: auto;
   width: 100%;
   max-width: 1200px;
-  background-color: rgba(255, 255, 255, 0.82);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  background-color: var(--white);
   border-radius: 999px; /* full pill */
   padding: 12px 32px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   box-shadow: rgba(0, 0, 0, 0.08) 0px 12px 36px -4px, rgba(0, 0, 0, 0.02) 0px 4px 12px 0px;
-  border: 1px solid rgba(255, 255, 255, 0.6);
+  border: 1px solid var(--divider-color);
 }
 
 .nav-logo-group {

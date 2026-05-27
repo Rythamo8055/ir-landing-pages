@@ -32,6 +32,8 @@ export default function LandingPage() {
   // Booking Modal State
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState("");
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
@@ -91,10 +93,31 @@ export default function LandingPage() {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleFormSubmit = (e: React.FormEvent) => {
+  const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Simulate premium scheduling dispatch
-    setIsSubmitted(true);
+    setIsSubmitting(true);
+    setSubmitError("");
+    
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+      
+      if (!response.ok) {
+        throw new Error("Failed to dispatch appointment request. Please try again.");
+      }
+      
+      setIsSubmitted(true);
+    } catch (error: any) {
+      console.error("Intake dispatch error:", error);
+      setSubmitError(error.message || "An unexpected error occurred. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const resetForm = () => {
@@ -108,6 +131,7 @@ export default function LandingPage() {
     });
     setIsSubmitted(false);
     setIsModalOpen(false);
+    setSubmitError("");
   };
 
   const openBookingWithProcedure = (procKey: string) => {
@@ -359,7 +383,7 @@ export default function LandingPage() {
           title="Precision Guidance. Pinhole Healing."
           date="• RYTHAMO HOSPITALS"
           scrollToExpand="Scroll to Enter the Clinic"
-          textBlend={true}
+          textBlend={false}
         >
           <div style={{ display: "flex", flexDirection: "column", alignItems: "center", width: "100%", color: "var(--ink-black)", marginTop: "-40px" }}>
             <p className="typography-lead" style={{ fontSize: "1.25rem", color: "var(--slate-gray)", marginBottom: "32px", lineHeight: "1.6", textAlign: "center", maxWidth: "800px" }}>
@@ -1005,19 +1029,27 @@ export default function LandingPage() {
                     />
                   </div>
 
+                  {submitError && (
+                    <div style={{ color: "#CF4500", fontSize: "0.875rem", marginBottom: "16px", fontWeight: 500 }} suppressHydrationWarning>
+                      ⚠️ {submitError}
+                    </div>
+                  )}
+
                   <div className="form-actions" suppressHydrationWarning>
                     <button 
                       type="button" 
                       onClick={resetForm}
                       className="btn-secondary"
+                      disabled={isSubmitting}
                     >
                       Cancel
                     </button>
                     <button 
                       type="submit" 
                       className="btn-primary"
+                      disabled={isSubmitting}
                     >
-                      Confirm Private Intake <ArrowRight size={18} />
+                      {isSubmitting ? "Dispatched..." : "Confirm Private Intake"} <ArrowRight size={18} />
                     </button>
                   </div>
                 </form>

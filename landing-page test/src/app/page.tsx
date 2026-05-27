@@ -44,6 +44,8 @@ export default function Home() {
     message: "",
   });
   const [formSubmitted, setFormSubmitted] = useState(false);
+  const [formSubmitting, setFormSubmitting] = useState(false);
+  const [formError, setFormError] = useState("");
 
   // Procedures Database
   const procedures: Procedure[] = [
@@ -141,10 +143,30 @@ export default function Home() {
     : procedures.filter(p => p.category === activeCategory);
 
   // Form Submit Handler
-  const handleFormSubmit = (e: React.FormEvent) => {
+  const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (formData.name && formData.email && formData.phone) {
+    setFormSubmitting(true);
+    setFormError("");
+    
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+      
+      if (!response.ok) {
+        throw new Error("Failed to dispatch appointment request. Please try again.");
+      }
+      
       setFormSubmitted(true);
+    } catch (error: any) {
+      console.error("Intake dispatch error (test 1):", error);
+      setFormError(error.message || "An unexpected error occurred. Please try again.");
+    } finally {
+      setFormSubmitting(false);
     }
   };
 
@@ -800,6 +822,7 @@ export default function Home() {
                     onClick={() => {
                       setFormSubmitted(false);
                       setFormData({ name: "", email: "", phone: "", procedureInterest: "General IR Inquiry", urgency: "Routine", message: "" });
+                      setFormError("");
                     }}
                     className="px-6 py-2.5 rounded-sm bg-surface-obsidian hover:bg-surface-obsidian-hover text-light text-xs font-semibold font-heading tracking-action transition-all border border-border-glass cursor-pointer"
                   >
@@ -901,11 +924,18 @@ export default function Home() {
                     />
                   </div>
 
+                  {formError && (
+                    <div className="text-xs text-red-500 font-semibold mb-2" suppressHydrationWarning={true}>
+                      ⚠️ {formError}
+                    </div>
+                  )}
+
                   <button 
                     type="submit"
-                    className="w-full py-4 rounded-sm bg-azure-glow text-obsidian font-heading font-bold text-base hover:bg-azure-glow/90 transition-all cursor-pointer tracking-action"
+                    disabled={formSubmitting}
+                    className="w-full py-4 rounded-sm bg-azure-glow text-obsidian font-heading font-bold text-base hover:bg-azure-glow/90 transition-all cursor-pointer tracking-action disabled:opacity-55"
                   >
-                    Submit Secure Consultation Request
+                    {formSubmitting ? "Dispatched..." : "Submit Secure Consultation Request"}
                   </button>
                 </form>
               )}
