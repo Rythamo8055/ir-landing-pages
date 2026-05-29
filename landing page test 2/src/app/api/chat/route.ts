@@ -72,7 +72,7 @@ export async function POST(req: Request) {
       model: "gemini-2.5-flash",
       systemInstruction: systemInstruction,
       generationConfig: {
-        maxOutputTokens: 250, // strict limit to prevent long chunks
+        maxOutputTokens: 1000, // headroom to prevent truncation while prompt enforces brevity
         temperature: 0.3, // Low temperature for consistent clinical output
       },
     });
