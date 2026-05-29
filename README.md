@@ -2,7 +2,10 @@
 
 Welcome to the official, public repository for **Rythamo Hospitals' Interventional Radiology (IR)** premium landing pages. 
 
-This repository is structured as a monorepo containing two distinct clinical testing designs, both built using high-performance Next.js architectures, tailored warm-light brand aesthetics, and advanced AI integrations.
+## 🌐 Live Production Domains
+
+* **Test Variant 1 (Dual-Tone Vascular theme):** 🔗 [https://ir-landing-page-test-1.vercel.app](https://ir-landing-page-test-1.vercel.app)
+* **Test Variant 2 (Luxury Editorial theme):** 🔗 [https://irlandingtest.vercel.app](https://irlandingtest.vercel.app)
 
 ---
 
