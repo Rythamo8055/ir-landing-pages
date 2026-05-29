@@ -15,15 +15,15 @@ The repository is structured as follows:
 
 ```
 ├── landing-page test/        # Test Variant 1: Dual-tone design, vascular highlights
-└── landing page test 2/      # Test Variant 2: Luxury editorial theme, Gemini 2.5 chatbot integration
+└── landing-page-test-2/      # Test Variant 2: Luxury editorial theme, Gemini 2.5 chatbot integration
 ```
 
 ---
 
 ## 🚀 Key Features & UI Aesthetics
 
-* **Solid & Stable Navigation:** Replaced the glassmorphic pill navbar with a high-contrast, opaque card styling (`var(--white)`) in `landing page test 2` for a reliable, seamless reading experience across all viewports.
-* **Hyper-Legible Hero Branding:** Configured solid opaque titles with soft backing shadows in `landing page test 2` to eliminate text blend overlaps and guarantee immediate legibility on high-resolution displays.
+* **Solid & Stable Navigation:** Replaced the glassmorphic pill navbar with a high-contrast, opaque card styling (`var(--white)`) in `landing-page-test-2` for a reliable, seamless reading experience across all viewports.
+* **Hyper-Legible Hero Branding:** Configured solid opaque titles with soft backing shadows in `landing-page-test-2` to eliminate text blend overlaps and guarantee immediate legibility on high-resolution displays.
 * **Gemini 2.5 Outpatient Chatbot:** Powered by Google's flagship **`gemini-2.5-flash`** model. Acts as an empathetic, professional virtual clinical educator that answers patient questions about Uterine Artery Embolization (UAE), TACE, Angioplasty, and Varicose Vein therapies in concise, 4-line outlines.
 * **Live Google Sheets Integration:** A serverless API route in `/api/contact` automatically routes all patient consultation requests straight to a secure Google Spreadsheet via Google Apps Script.
 
@@ -70,7 +70,7 @@ To run either project locally, navigate to the folder and start the Turbopack se
 
 ```bash
 # For Variant 2
-cd "landing page test 2"
+cd "landing-page-test-2"
 npm run dev
 
 # For Variant 1
