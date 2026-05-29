@@ -1,4 +1,9 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Rythamo Hospitals — Luxury Editorial Landing Page
+
+This is the **Test Variant 2 (Luxury Editorial theme)** project for Rythamo Hospitals' Interventional Radiology (IR), featuring the Gemini 2.5 outpatient chatbot integration and robust Google Sheets form submission.
+
+> [!NOTE]
+> This project was renamed from `landing page test 2` to `landing-page-test-2` to comply with Vercel's serverless function path naming rules (no spaces allowed).
 
 ## Getting Started
 
